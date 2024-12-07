@@ -221,7 +221,7 @@ socket.on("commentRate", (data) => {
   rate = data;
 });
 
-//   const comment = document.querySelector(".comment");
+  const comment = document.querySelector(".comment");
 //   comment.innerHTML = "";
 //   if (!comment.querySelector(".commentSection")) {
 //     for (let i = comments.length - 1; i >= 0; i--) {
