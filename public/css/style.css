@@ -930,7 +930,7 @@ label {
   }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 470px) {
   body {
     font-size: 7px;
   }
