@@ -206,42 +206,41 @@ function taketo() {
   document.location.href = "/index.html";
 }
 
-  const stars1 = document.querySelectorAll(".str1");
-  const stars2 = document.querySelectorAll(".str2");
-  const stars3 = document.querySelectorAll(".str3");
+const stars1 = document.querySelectorAll(".str1");
+const stars2 = document.querySelectorAll(".str2");
+const stars3 = document.querySelectorAll(".str3");
 
+stars1.forEach((star, j) => {
+  star.addEventListener("click", (e) => {
+    e.preventDefault();
 
-  stars1.forEach((star, j) => {
-    star.addEventListener("click", (e) => {
-      e.preventDefault();
+    for (let k = 0; k <= j; k++) {
+      stars1[k].classList.remove("fa-regular");
+      stars1[k].classList.add("fa-solid");
+    }
+  });
+});
 
-      for (let k = 0; k <= j; k++) {
-        stars1[k].classList.remove("fa-regular");
-        stars1[k].classList.add("fa-solid");
-      }
-        }),
-      });
+stars2.forEach((star, j) => {
+  star.addEventListener("click", (e) => {
+    e.preventDefault();
 
-  stars2.forEach((star, j) => {
-    star.addEventListener("click", (e) => {
-      e.preventDefault();
+    for (let k = 0; k <= j; k++) {
+      stars2[k].classList.remove("fa-regular");
+      stars2[k].classList.add("fa-solid");
+    }
+  });
+});
 
-      for (let k = 0; k <= j; k++) {
-        stars2[k].classList.remove("fa-regular");
-        stars2[k].classList.add("fa-solid");
-      }
-        }),
-      });
+stars3.forEach((star, j) => {
+  star.addEventListener("click", (e) => {
+    e.preventDefault();
 
-  stars3.forEach((star, j) => {
-    star.addEventListener("click", (e) => {
-      e.preventDefault();
-
-      for (let k = 0; k <= j; k++) {
-        stars3[k].classList.remove("fa-regular");
-        stars3[k].classList.add("fa-solid");
-      }
-        }),
-      });
+    for (let k = 0; k <= j; k++) {
+      stars3[k].classList.remove("fa-regular");
+      stars3[k].classList.add("fa-solid");
+    }
+  });
+});
 
 
