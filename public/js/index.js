@@ -221,7 +221,7 @@ socket.on("commentRate", (data) => {
   rate = data;
 });
 
-  const comment = document.querySelector(".comment");
+  // const comment = document.querySelector(".comment");
 //   comment.innerHTML = "";
 //   if (!comment.querySelector(".commentSection")) {
 //     for (let i = comments.length - 1; i >= 0; i--) {
@@ -438,9 +438,7 @@ socket.on("commentRate", (data) => {
 //      comment.insertAdjacentHTML("afterbegin", html);
 
 // function createCommentSection() {
-  const stars = comment.querySelectorAll(
-    `.commentSection:nth-child(1) .str`
-  );
+  const stars = document.querySelectorAll(".str");
 
   stars.forEach((star, j) => {
     star.addEventListener("click", (e) => {
