@@ -221,222 +221,222 @@ socket.on("commentRate", (data) => {
   rate = data;
 });
 
-function createCommentSection() {
-  const comment = document.querySelector(".comment");
-  comment.innerHTML = "";
-  if (!comment.querySelector(".commentSection")) {
-    for (let i = comments.length - 1; i >= 0; i--) {
-      let html = "";
+// function createCommentSection() {
+//   const comment = document.querySelector(".comment");
+//   comment.innerHTML = "";
+//   if (!comment.querySelector(".commentSection")) {
+//     for (let i = comments.length - 1; i >= 0; i--) {
+//       let html = "";
 
-      for (let k = 0; k < rate.length; k++) {
-        if (
-          Math.round(rate[k].average_rate) == 0 &&
-          rate[k].comment === comments[i].comment
-        ) {
-          html = `<div class="commentSection">
-    <div style="display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;"> 
-    <div>
-      <p style="margin=0;padding=0">${comments[i].fname} ${comments[i].lname}</p>
-      <small>${comments[i].email}</small>       
-      </div>
-      <div class="rating">
-      <p style="display:inline">Average Rating: </p>
-      <i class="fa-regular fa-star "></i>
-      <i class="fa-regular fa-star "></i>
-      <i class="fa-regular fa-star "></i>
-      <i class="fa-regular fa-star "></i>
-      <i class="fa-regular fa-star "></i>
-    </div>
-    </div >
-      <div class="div">
-        <p style="color:white">${comments[i].comment}</p>
-        <div class="rating">
-        <p style="display:inline">Your Rating: </p>
-          <i class="fa-regular fa-star str"></i>
-          <i class="fa-regular fa-star str"></i>
-          <i class="fa-regular fa-star str"></i>
-          <i class="fa-regular fa-star str"></i>
-          <i class="fa-regular fa-star str"></i>
-        </div>
-      </div>
-    </div>`;
-        } else if (
-          Math.round(rate[k].average_rate) == 1 &&
-          rate[k].comment === comments[i].comment
-        ) {
-          html = `<div class="commentSection">
-    <div style="display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;"> 
-    <div>
-      <p style="margin=0;padding=0">${comments[i].fname} ${comments[i].lname}</p>
-      <small>${comments[i].email}</small>       
-      </div>
-      <div class="rating">
-      <p style="display:inline">Average Rating: </p>
-      <i class="fa-solid fa-star "></i>
-      <i class="fa-regular fa-star "></i>
-      <i class="fa-regular fa-star "></i>
-      <i class="fa-regular fa-star "></i>
-      <i class="fa-regular fa-star "></i>
-    </div>
-    </div >
-      <div class="div">
-        <p style="color:white">${comments[i].comment}</p>
-        <div class="rating">
-        <p style="display:inline">Your Rating: </p>
-          <i class="fa-regular fa-star str"></i>
-          <i class="fa-regular fa-star str"></i>
-          <i class="fa-regular fa-star str"></i>
-          <i class="fa-regular fa-star str"></i>
-          <i class="fa-regular fa-star str"></i>
-        </div>
-      </div>
-    </div>`;
-        } else if (
-          Math.round(rate[k].average_rate) == 2 &&
-          rate[k].comment === comments[i].comment
-        ) {
-          html = `<div class="commentSection">
-    <div style="display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;"> 
-    <div>
-      <p style="margin=0;padding=0">${comments[i].fname} ${comments[i].lname}</p>
-      <small>${comments[i].email}</small>       
-      </div>
-      <div class="rating">
-      <p style="display:inline">Average Rating: </p>
-      <i class="fa-solid fa-star "></i>
-      <i class="fa-solid fa-star "></i>
-      <i class="fa-regular fa-star "></i>
-      <i class="fa-regular fa-star "></i>
-      <i class="fa-regular fa-star "></i>
-    </div>
-    </div >
-      <div class="div">
-        <p style="color:white">${comments[i].comment}</p>
-        <div class="rating">
-        <p style="display:inline">Your Rating: </p>
-          <i class="fa-regular fa-star str"></i>
-          <i class="fa-regular fa-star str"></i>
-          <i class="fa-regular fa-star str"></i>
-          <i class="fa-regular fa-star str"></i>
-          <i class="fa-regular fa-star str"></i>
-        </div>
-      </div>
-    </div>`;
-        }
-        if (
-          Math.round(rate[k].average_rate) == 3 &&
-          rate[k].comment === comments[i].comment
-        ) {
-          html = `<div class="commentSection">
-    <div style="display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;"> 
-    <div>
-      <p style="margin=0;padding=0">${comments[i].fname} ${comments[i].lname}</p>
-      <small>${comments[i].email}</small>       
-      </div>
-      <div class="rating">
-      <p style="display:inline">Average Rating: </p>
-      <i class="fa-solid fa-star "></i>
-      <i class="fa-solid fa-star "></i>
-      <i class="fa-solid fa-star "></i>
-      <i class="fa-regular fa-star "></i>
-      <i class="fa-regular fa-star "></i>
-    </div>
-    </div >
-      <div class="div">
-        <p style="color:white">${comments[i].comment}</p>
-        <div class="rating">
-        <p style="display:inline">Your Rating: </p>
-          <i class="fa-regular fa-star str"></i>
-          <i class="fa-regular fa-star str"></i>
-          <i class="fa-regular fa-star str"></i>
-          <i class="fa-regular fa-star str"></i>
-          <i class="fa-regular fa-star str"></i>
-        </div>
-      </div>
-    </div>`;
-        } else if (
-          Math.round(rate[k].average_rate) == 4 &&
-          rate[k].comment === comments[i].comment
-        ) {
-          html = `<div class="commentSection">
-    <div style="display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;"> 
-    <div>
-      <p style="margin=0;padding=0">${comments[i].fname} ${comments[i].lname}</p>
-      <small>${comments[i].email}</small>       
-      </div>
-      <div class="rating">
-      <p style="display:inline">Average Rating: </p>
-      <i class="fa-solid fa-star "></i>
-      <i class="fa-solid fa-star "></i>
-      <i class="fa-solid fa-star "></i>
-      <i class="fa-solid fa-star "></i>
-      <i class="fa-regular fa-star "></i>
-    </div>
-    </div >
-      <div class="div">
-        <p style="color:white">${comments[i].comment}</p>
-        <div class="rating">
-        <p style="display:inline">Your Rating: </p>
-          <i class="fa-regular fa-star str"></i>
-          <i class="fa-regular fa-star str"></i>
-          <i class="fa-regular fa-star str"></i>
-          <i class="fa-regular fa-star str"></i>
-          <i class="fa-regular fa-star str"></i>
-        </div>
-      </div>
-    </div>`;
-        } else if (
-          Math.round(rate[k].average_rate) == 5 &&
-          rate[k].comment === comments[i].comment
-        ) {
-          html = `<div class="commentSection">
-    <div style="display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;"> 
-    <div>
-      <p style="margin=0;padding=0">${comments[i].fname} ${comments[i].lname}</p>
-      <small>${comments[i].email}</small>       
-      </div>
-      <div class="rating">
-      <p style="display:inline">Average Rating: </p>
-      <i class="fa-solid fa-star "></i>
-      <i class="fa-solid fa-star "></i>
-      <i class="fa-solid fa-star "></i>
-      <i class="fa-solid fa-star "></i>
-      <i class="fa-solid fa-star "></i>
-    </div>
-    </div >
-      <div class="div">
-        <p style="color:white">${comments[i].comment}</p>
-        <div class="rating">
-        <p style="display:inline">Your Rating: </p>
-          <i class="fa-regular fa-star str"></i>
-          <i class="fa-regular fa-star str"></i>
-          <i class="fa-regular fa-star str"></i>
-          <i class="fa-regular fa-star str"></i>
-          <i class="fa-regular fa-star str"></i>
-        </div>
-      </div>
-    </div>`;
-        }
-      }
-      comment.insertAdjacentHTML("afterbegin", html);
+//       for (let k = 0; k < rate.length; k++) {
+//         if (
+//           Math.round(rate[k].average_rate) == 0 &&
+//           rate[k].comment === comments[i].comment
+//         ) {
+//           html = `<div class="commentSection">
+//     <div style="display: flex;
+//     flex-direction: row;
+//     align-items: center;
+//     justify-content: space-between;"> 
+//     <div>
+//       <p style="margin=0;padding=0">${comments[i].fname} ${comments[i].lname}</p>
+//       <small>${comments[i].email}</small>       
+//       </div>
+//       <div class="rating">
+//       <p style="display:inline">Average Rating: </p>
+//       <i class="fa-regular fa-star "></i>
+//       <i class="fa-regular fa-star "></i>
+//       <i class="fa-regular fa-star "></i>
+//       <i class="fa-regular fa-star "></i>
+//       <i class="fa-regular fa-star "></i>
+//     </div>
+//     </div >
+//       <div class="div">
+//         <p style="color:white">${comments[i].comment}</p>
+//         <div class="rating">
+//         <p style="display:inline">Your Rating: </p>
+//           <i class="fa-regular fa-star str"></i>
+//           <i class="fa-regular fa-star str"></i>
+//           <i class="fa-regular fa-star str"></i>
+//           <i class="fa-regular fa-star str"></i>
+//           <i class="fa-regular fa-star str"></i>
+//         </div>
+//       </div>
+//     </div>`;
+//         } else if (
+//           Math.round(rate[k].average_rate) == 1 &&
+//           rate[k].comment === comments[i].comment
+//         ) {
+//           html = `<div class="commentSection">
+//     <div style="display: flex;
+//     flex-direction: row;
+//     align-items: center;
+//     justify-content: space-between;"> 
+//     <div>
+//       <p style="margin=0;padding=0">${comments[i].fname} ${comments[i].lname}</p>
+//       <small>${comments[i].email}</small>       
+//       </div>
+//       <div class="rating">
+//       <p style="display:inline">Average Rating: </p>
+//       <i class="fa-solid fa-star "></i>
+//       <i class="fa-regular fa-star "></i>
+//       <i class="fa-regular fa-star "></i>
+//       <i class="fa-regular fa-star "></i>
+//       <i class="fa-regular fa-star "></i>
+//     </div>
+//     </div >
+//       <div class="div">
+//         <p style="color:white">${comments[i].comment}</p>
+//         <div class="rating">
+//         <p style="display:inline">Your Rating: </p>
+//           <i class="fa-regular fa-star str"></i>
+//           <i class="fa-regular fa-star str"></i>
+//           <i class="fa-regular fa-star str"></i>
+//           <i class="fa-regular fa-star str"></i>
+//           <i class="fa-regular fa-star str"></i>
+//         </div>
+//       </div>
+//     </div>`;
+//         } else if (
+//           Math.round(rate[k].average_rate) == 2 &&
+//           rate[k].comment === comments[i].comment
+//         ) {
+//           html = `<div class="commentSection">
+//     <div style="display: flex;
+//     flex-direction: row;
+//     align-items: center;
+//     justify-content: space-between;"> 
+//     <div>
+//       <p style="margin=0;padding=0">${comments[i].fname} ${comments[i].lname}</p>
+//       <small>${comments[i].email}</small>       
+//       </div>
+//       <div class="rating">
+//       <p style="display:inline">Average Rating: </p>
+//       <i class="fa-solid fa-star "></i>
+//       <i class="fa-solid fa-star "></i>
+//       <i class="fa-regular fa-star "></i>
+//       <i class="fa-regular fa-star "></i>
+//       <i class="fa-regular fa-star "></i>
+//     </div>
+//     </div >
+//       <div class="div">
+//         <p style="color:white">${comments[i].comment}</p>
+//         <div class="rating">
+//         <p style="display:inline">Your Rating: </p>
+//           <i class="fa-regular fa-star str"></i>
+//           <i class="fa-regular fa-star str"></i>
+//           <i class="fa-regular fa-star str"></i>
+//           <i class="fa-regular fa-star str"></i>
+//           <i class="fa-regular fa-star str"></i>
+//         </div>
+//       </div>
+//     </div>`;
+//         }
+//         if (
+//           Math.round(rate[k].average_rate) == 3 &&
+//           rate[k].comment === comments[i].comment
+//         ) {
+//           html = `<div class="commentSection">
+//     <div style="display: flex;
+//     flex-direction: row;
+//     align-items: center;
+//     justify-content: space-between;"> 
+//     <div>
+//       <p style="margin=0;padding=0">${comments[i].fname} ${comments[i].lname}</p>
+//       <small>${comments[i].email}</small>       
+//       </div>
+//       <div class="rating">
+//       <p style="display:inline">Average Rating: </p>
+//       <i class="fa-solid fa-star "></i>
+//       <i class="fa-solid fa-star "></i>
+//       <i class="fa-solid fa-star "></i>
+//       <i class="fa-regular fa-star "></i>
+//       <i class="fa-regular fa-star "></i>
+//     </div>
+//     </div >
+//       <div class="div">
+//         <p style="color:white">${comments[i].comment}</p>
+//         <div class="rating">
+//         <p style="display:inline">Your Rating: </p>
+//           <i class="fa-regular fa-star str"></i>
+//           <i class="fa-regular fa-star str"></i>
+//           <i class="fa-regular fa-star str"></i>
+//           <i class="fa-regular fa-star str"></i>
+//           <i class="fa-regular fa-star str"></i>
+//         </div>
+//       </div>
+//     </div>`;
+//         } else if (
+//           Math.round(rate[k].average_rate) == 4 &&
+//           rate[k].comment === comments[i].comment
+//         ) {
+//           html = `<div class="commentSection">
+//     <div style="display: flex;
+//     flex-direction: row;
+//     align-items: center;
+//     justify-content: space-between;"> 
+//     <div>
+//       <p style="margin=0;padding=0">${comments[i].fname} ${comments[i].lname}</p>
+//       <small>${comments[i].email}</small>       
+//       </div>
+//       <div class="rating">
+//       <p style="display:inline">Average Rating: </p>
+//       <i class="fa-solid fa-star "></i>
+//       <i class="fa-solid fa-star "></i>
+//       <i class="fa-solid fa-star "></i>
+//       <i class="fa-solid fa-star "></i>
+//       <i class="fa-regular fa-star "></i>
+//     </div>
+//     </div >
+//       <div class="div">
+//         <p style="color:white">${comments[i].comment}</p>
+//         <div class="rating">
+//         <p style="display:inline">Your Rating: </p>
+//           <i class="fa-regular fa-star str"></i>
+//           <i class="fa-regular fa-star str"></i>
+//           <i class="fa-regular fa-star str"></i>
+//           <i class="fa-regular fa-star str"></i>
+//           <i class="fa-regular fa-star str"></i>
+//         </div>
+//       </div>
+//     </div>`;
+//         } else if (
+//           Math.round(rate[k].average_rate) == 5 &&
+//           rate[k].comment === comments[i].comment
+//         ) {
+//           html = `<div class="commentSection">
+//     <div style="display: flex;
+//     flex-direction: row;
+//     align-items: center;
+//     justify-content: space-between;"> 
+//     <div>
+//       <p style="margin=0;padding=0">${comments[i].fname} ${comments[i].lname}</p>
+//       <small>${comments[i].email}</small>       
+//       </div>
+//       <div class="rating">
+//       <p style="display:inline">Average Rating: </p>
+//       <i class="fa-solid fa-star "></i>
+//       <i class="fa-solid fa-star "></i>
+//       <i class="fa-solid fa-star "></i>
+//       <i class="fa-solid fa-star "></i>
+//       <i class="fa-solid fa-star "></i>
+//     </div>
+//     </div >
+//       <div class="div">
+//         <p style="color:white">${comments[i].comment}</p>
+//         <div class="rating">
+//         <p style="display:inline">Your Rating: </p>
+//           <i class="fa-regular fa-star str"></i>
+//           <i class="fa-regular fa-star str"></i>
+//           <i class="fa-regular fa-star str"></i>
+//           <i class="fa-regular fa-star str"></i>
+//           <i class="fa-regular fa-star str"></i>
+//         </div>
+//       </div>
+//     </div>`;
+//         }
+//       }
+//      comment.insertAdjacentHTML("afterbegin", html);
 
       const stars = comment.querySelectorAll(
         `.commentSection:nth-child(1) .str`
