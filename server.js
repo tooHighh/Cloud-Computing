@@ -1,5 +1,4 @@
 const path = require("path");
-const mysql = require("mysql2");
 const fs = require("fs");
 const express = require("express");
 const app = express();
@@ -7,23 +6,16 @@ const server = require("http").createServer(app);
 const io = require("socket.io")(server);
 require("dotenv").config();
 const port = process.env.PORT;
+const { Client } = require("pg");
+
+const client = new Client({
+  connectionString: process.env.EXTERNALURL,
+});
 
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-const connection = mysql.createConnection({
-  host: process.env.HOST,
-  user: process.env.USER,
-  password: process.env.PASSWORD,
-  database: process.env.DATABASE,
-});
-
-connection.connect((err) => {
-  if (err) console.error(err);
-  console.log("Connection to mysql successful!");
-});
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
@@ -32,19 +24,20 @@ app.get("/", (req, res) => {
 app.post("/submit", (req, res) => {
   const { fname, lname, email, comment } = req.body;
   try {
-    connection.query(
-      "INSERT INTO users (fname,lname,email,comment) VALUES (?,?,?,?)",
+    client.query(
+      "INSERT INTO users (fname, lname, email, comment) VALUES ($1, $2, $3, $4) RETURNING id",
       [fname, lname, email, comment],
-      (err) => {
-        console.log(err);
+      (err, result) => {
+        if (err) console.error(err);
+        console.log("User inserted with ID:", result.rows[0].id);
       }
     );
 
-    connection.query(
-      "INSERT INTO comments (comment,rate,email) VALUES (?,?,?)",
+    client.query(
+      "INSERT INTO comments (comment, rate, email) VALUES ($1, $2, $3)",
       [comment, 0, email],
       (err) => {
-        console.log(err);
+        if (err) console.error(err);
       }
     );
 
@@ -62,25 +55,22 @@ app.post("/submit", (req, res) => {
           .replace("{{lname}}", lname);
         res.send(response);
 
-        connection.query(
+        client.query(
           "SELECT c.email, c.comment, AVG(rate) AS average_rate FROM comments AS c NATURAL JOIN users AS u GROUP BY c.comment, c.email ORDER BY average_rate DESC;",
           (err, result) => {
             if (err) console.error(err);
             io.on("connection", (socket) => {
-              socket.emit("commentRate", result);
+              socket.emit("commentRate", result.rows);
             });
           }
         );
 
-        connection.query(
-          "SELECT * FROM users ORDER BY id DESC ",
-          (err, result) => {
-            if (err) console.error(err);
-            io.on("connection", (socket) => {
-              socket.emit("commentData", result);
-            });
-          }
-        );
+        client.query("SELECT * FROM users ORDER BY id DESC", (err, result) => {
+          if (err) console.error(err);
+          io.on("connection", (socket) => {
+            socket.emit("commentData", result.rows);
+          });
+        });
       }
     );
   } catch (err) {
@@ -91,14 +81,14 @@ app.post("/submit", (req, res) => {
 app.post("/addRate", (req, res) => {
   const { rate, comment, email } = req.body;
 
-  connection.query(
-    `SELECT * FROM comments WHERE comment = ? AND email = ?`,
+  client.query(
+    `SELECT * FROM comments WHERE comment = $1 AND email = $2`,
     [comment, email],
     (err, result) => {
       if (err) console.error(err);
-      if (result.length == 1) {
-        connection.query(
-          `INSERT INTO comments (comment, email, rate) VALUES (?,?,?)`,
+      if (result.rows.length == 1) {
+        client.query(
+          `INSERT INTO comments (comment, email, rate) VALUES ($1, $2, $3)`,
           [comment, email, 2 * rate],
           (error, results) => {
             if (error) {
@@ -110,8 +100,8 @@ app.post("/addRate", (req, res) => {
           }
         );
       } else {
-        connection.query(
-          `INSERT INTO comments (comment, email, rate) VALUES (?,?,?)`,
+        client.query(
+          `INSERT INTO comments (comment, email, rate) VALUES ($1, $2, $3)`,
           [comment, email, rate],
           (error, results) => {
             if (error) {
@@ -126,12 +116,12 @@ app.post("/addRate", (req, res) => {
     }
   );
 
-  connection.query(
+  client.query(
     "SELECT c.email, c.comment, AVG(rate) AS average_rate FROM comments AS c NATURAL JOIN users AS u GROUP BY c.comment, c.email ORDER BY average_rate DESC;",
     (err, result) => {
       if (err) console.error(err);
       io.on("connection", (socket) => {
-        socket.emit("commentRate", result);
+        socket.emit("commentRate", result.rows);
       });
     }
   );
