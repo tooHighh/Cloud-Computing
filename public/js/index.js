@@ -437,7 +437,7 @@ socket.on("commentRate", (data) => {
 //       }
 //      comment.insertAdjacentHTML("afterbegin", html);
 
-function createCommentSection() {
+// function createCommentSection() {
   const stars = comment.querySelectorAll(
     `.commentSection:nth-child(1) .str`
   );
@@ -464,5 +464,5 @@ function createCommentSection() {
       });
     });
   });
-}
+// }
 
