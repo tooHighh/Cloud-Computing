@@ -9,7 +9,7 @@ const port = process.env.PORT;
 const { Client } = require("pg");
 
 const client = new Client({
-  connectionString: process.env.EXTERNALURL,
+  connectionString: process.env.INTERNALURL,
 });
 
 app.use(express.static(path.join(__dirname, "public")));
