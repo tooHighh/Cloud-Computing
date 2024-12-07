@@ -221,7 +221,6 @@ socket.on("commentRate", (data) => {
   rate = data;
 });
 
-// function createCommentSection() {
 //   const comment = document.querySelector(".comment");
 //   comment.innerHTML = "";
 //   if (!comment.querySelector(".commentSection")) {
@@ -438,32 +437,32 @@ socket.on("commentRate", (data) => {
 //       }
 //      comment.insertAdjacentHTML("afterbegin", html);
 
-      const stars = comment.querySelectorAll(
-        `.commentSection:nth-child(1) .str`
-      );
+function createCommentSection() {
+  const stars = comment.querySelectorAll(
+    `.commentSection:nth-child(1) .str`
+  );
 
-      stars.forEach((star, j) => {
-        star.addEventListener("click", (e) => {
-          e.preventDefault();
+  stars.forEach((star, j) => {
+    star.addEventListener("click", (e) => {
+      e.preventDefault();
 
-          for (let k = 0; k <= j; k++) {
-            stars[k].classList.remove("fa-regular");
-            stars[k].classList.add("fa-solid");
-          }
+      for (let k = 0; k <= j; k++) {
+        stars[k].classList.remove("fa-regular");
+        stars[k].classList.add("fa-solid");
+      }
 
-          fetch("/addRate", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              rate: j + 1,
-              comment: comments[i].comment,
-              email: comments[i].email,
-            }),
-          });
-        });
+      fetch("/addRate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          rate: j + 1,
+          comment: comments[i].comment,
+          email: comments[i].email,
+        }),
       });
-    }
-  }
+    });
+  });
 }
+
