@@ -219,7 +219,7 @@ nav .ul li:hover {
 
 .copy {
   text-align: center;
-  font-size: 0.75em;
+  font-size: 0.85em;
   padding-top: 2em;
   border-top: 1px solid white;
   width: 80%;
@@ -481,12 +481,14 @@ nav .ul li:hover {
   margin: 1.5em;
 }
 
-.contact-item i {
+.contact-item a i {
   margin-right: 0.5em;
 }
 
 .contact-item a {
   text-decoration: none;
+  display: flex;
+  flex-direction: row;
 }
 
 .contact-item a:hover {
@@ -647,7 +649,6 @@ label {
   display: flex;
   flex-direction: row;
 }
-
 .sub input {
   background-color: #32b0e7;
   color: white;
@@ -930,14 +931,18 @@ label {
   }
 }
 
-@media (max-width: 470px) {
+@media (max-width: 450px) {
   body {
-    font-size: 7px;
+    font-size: 8px;
   }
 
   .h3 {
     color: #32b0e7;
     font-size: 3em;
+  }
+
+  .head {
+    font-size: 9px;
   }
 
   .p1,
@@ -948,7 +953,10 @@ label {
 
   .contact-info {
     margin-top: 2em;
-    font-size: 7px;
+  }
+
+  .contact-item p {
+    display: none;
   }
 
   .p1 ul {
@@ -1013,10 +1021,12 @@ label {
   body {
     font-size: 6px;
   }
-
-.contact-item{
-  font-size: 6px;
 }
+
+@media (max-width: 300px) {
+  body {
+    font-size: 5px;
+  }
 }
 
 @keyframes img_fade_in {
