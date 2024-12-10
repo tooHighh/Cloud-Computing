@@ -941,6 +941,11 @@ label {
   .contact-item p {
     display: none;
   }
+
+  .contact-item a{
+    font-size: 1.3em;
+    padding: 0.5em 0;
+  }
 }
 
 @media (max-width: 450px) {
