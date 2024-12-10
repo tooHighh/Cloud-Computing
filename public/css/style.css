@@ -787,6 +787,14 @@ label {
   form {
     padding: 1em;
   }
+
+  .about {
+    font-size: 1.2em;
+  }
+
+  .contact-item a {
+    font-size: 0.8em;
+  }
 }
 
 @media (max-width: 599px) {
@@ -795,7 +803,7 @@ label {
   }
 
   .about {
-    font-size: 8.5px;
+    font-size: 1.2em;
   }
 
   .p1 i {
@@ -929,6 +937,10 @@ label {
   #contact {
     margin: 0em;
   }
+
+  .contact-item p {
+    display: none;
+  }
 }
 
 @media (max-width: 450px) {
@@ -953,10 +965,6 @@ label {
 
   .contact-info {
     margin-top: 2em;
-  }
-
-  .contact-item p {
-    display: none;
   }
 
   .p1 ul {
@@ -1015,6 +1023,7 @@ label {
     position: relative;
     right: 250%;
   }
+
 }
 
 @media (max-width: 400px) {
