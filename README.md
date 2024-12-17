@@ -23,3 +23,6 @@ To run the server that serves the index.html and achieve many tasks.
 > [!NOTE]
 > The steps above require installing Node.js on your machine.
 
+## Overview of the website
+
+This website gives a mini course about the cloud computing using a mix of frontend and backend (for comment section)
