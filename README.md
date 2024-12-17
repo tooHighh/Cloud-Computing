@@ -21,8 +21,12 @@ To install all the dependencies needed to run the code.
 To run the server that serves the index.html and achieve many tasks.
 
 > [!NOTE]
-> The steps above require installing Node.js on your machine.
+> The steps above require installing nodeJs on your machine.
 
 ## Overview of the website
 
 This website gives a mini course about the cloud computing using a mix of frontend and backend (for comment section)
+
+ <picture>
+  <source media="(prefers-color-scheme: dark)" srcset=""C:\Users\Marven\OneDrive\Pictures\Screenshots\Screenshot 2024-12-17 205323.png"">
+ </picture>
