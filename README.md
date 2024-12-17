@@ -4,7 +4,7 @@
 
 ### First step: initialize npm
 
-> npm init -y
+```> npm init -y```
 
 To load the package.json containing all the dependencies.
 
