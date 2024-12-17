@@ -12,4 +12,4 @@
 
 > node server.js (nodemon server.js if downloaded)
 
->[!NOTE] The steps above require installing nodeJs on your machine
+> **Note**: The steps above require installing nodeJs on your machine
