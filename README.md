@@ -1,5 +1,9 @@
 # Cloud-Computing
 
+## Overview of the website
+
+This website gives a mini course about the cloud computing using a mix of frontend and backend (for comment section)
+
 ## Requirements
 
 ### First step: initialize npm
@@ -22,8 +26,9 @@ To run the server that serves the index.html and achieve many tasks.
 
 > [!NOTE]
 > The steps above require installing nodeJs on your machine.
+> Also do not forget to put all your private infos in a .env file.
 
-## Overview of the website
+## Future goals
 
-This website gives a mini course about the cloud computing using a mix of frontend and backend (for comment section)
-
+- Fix some bugs.
+- Fix the comment rating logic.
